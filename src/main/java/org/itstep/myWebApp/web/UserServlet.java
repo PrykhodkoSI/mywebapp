@@ -48,7 +48,7 @@ public class UserServlet extends HttpServlet {
 
         String id = req.getParameter("id");
 
-        if (!id.isEmpty()) {
+        if (!(id == null || id.isEmpty())) {
             User user1 = service.getById(Integer.parseInt(id));
             user1.setName(name);
             user1.setLastname(lastname);
