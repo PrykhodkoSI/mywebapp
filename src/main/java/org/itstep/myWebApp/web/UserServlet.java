@@ -2,6 +2,7 @@ package org.itstep.myWebApp.web;
 
 import org.itstep.myWebApp.model.User;
 import org.itstep.myWebApp.service.UserService;
+import sun.awt.image.IntegerComponentRaster;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -30,6 +31,11 @@ public class UserServlet extends HttpServlet {
         } else if (action.equals("create")) {
             req.setAttribute("user", new User("name", "lastname", "city", "email"));
             req.getRequestDispatcher("editUser.jsp").forward(req, resp);
+        } else if (action.equals("update")) {
+            int id = Integer.parseInt(req.getParameter("id"));
+            User user1 = service.getById(id);
+            req.setAttribute("user", user1);
+            req.getRequestDispatcher("editUser.jsp").forward(req, resp);
         }
     }
 
@@ -39,7 +45,19 @@ public class UserServlet extends HttpServlet {
         String lastname = req.getParameter("lastname");
         String city = req.getParameter("city");
         String email = req.getParameter("email");
-        service.add(new User(name, lastname, city, email));
+
+        String id = req.getParameter("id");
+
+        if (!id.isEmpty()) {
+            User user1 = service.getById(Integer.parseInt(id));
+            user1.setName(name);
+            user1.setLastname(lastname);
+            user1.setCity(city);
+            user1.setEmail(email);
+        }
+        else {
+            service.add(new User(name, lastname, city, email));
+        }
 
         resp.sendRedirect("users");
     }

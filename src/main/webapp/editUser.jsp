@@ -22,6 +22,7 @@
         <dl>Email:</dl>
         <dt><input type="email" name="email" value="${user.email}"></dt>
         <button type="submit">SAVE</button>
+        <input type="hidden" name="id" value="${user.id}">
     </form>
 </body>
 </html>

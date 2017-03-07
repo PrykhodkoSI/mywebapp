@@ -13,6 +13,10 @@ public class UserService {
         return repository.getAll();
     }
 
+    public User getById(int id){
+        return repository.getById(id);
+    }
+
     public void delete(Integer id) {
         repository.delete(id);
     }
