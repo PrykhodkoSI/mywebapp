@@ -21,13 +21,13 @@
 
   <%--  // simple java realization
     <%
-        for (User user : (List<User>) request.getAttribute("userList")) {
+        for (User userId : (List<User>) request.getAttribute("userList")) {
         %>
         <tr>
-            <td><%=user.getName()%></td>
-            <td><%=user.getLastname()%></td>
-            <td><%=user.getCity()%></td>
-            <td><%=user.getEmail()%></td>
+            <td><%=userId.getName()%></td>
+            <td><%=userId.getLastname()%></td>
+            <td><%=userId.getCity()%></td>
+            <td><%=userId.getEmail()%></td>
             <td></td>
         </tr>
         <%
@@ -35,15 +35,15 @@
     %>--%>
 
     <%-- jstl realization - без костылей :)--%>
-    <c:forEach items="${userList}" var="user">
+    <c:forEach items="${userList}" var="userId">
         <tr>
-            <jsp:useBean id="user" class="org.itstep.myWebApp.model.User"/>
-            <td>${user.name}</td>
-            <td>${user.lastname}</td>
-            <td>${user.city}</td>
-            <td>${user.email}</td>
-            <td><a href="users?action=update&id=${user.id}">UPDATE</a> </td>
-            <td><a href="users?action=delete&id=${user.id}">DELETE</a></td>
+            <jsp:useBean id="userId" class="org.itstep.myWebApp.model.User"/>
+            <td>${userId.name}</td>
+            <td>${userId.lastname}</td>
+            <td>${userId.city}</td>
+            <td>${userId.email}</td>
+            <td><a href="users?action=update&id=${userId.id}">UPDATE</a> </td>
+            <td><a href="users?action=delete&id=${userId.id}">DELETE</a></td>
         </tr>
     </c:forEach>
 </table>
