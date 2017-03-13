@@ -10,34 +10,18 @@ public class Mail extends Entity {
 
     private LocalDateTime created;
 
-    private User user; // owner
+    private Integer userId; // owner
 
     public Mail() {
     }
 
-    public Mail(Integer id, String name, String text, String to, LocalDateTime created, User user) {
+    public Mail(Integer id, String name, String text, String to, LocalDateTime created, Integer userId) {
         this.id = id;
         this.name = name;
         this.text = text;
         this.to = to;
         this.created = created;
-        this.user = user;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        this.userId = userId;
     }
 
     public String getText() {
@@ -64,11 +48,21 @@ public class Mail extends Entity {
         this.created = created;
     }
 
-    public User getUser() {
-        return user;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    @Override
+    public String toString() {
+        return "Mail{" +
+                "text='" + text + '\'' +
+                ", to='" + to + '\'' +
+                ", created=" + created +
+                ", userId=" + userId +
+                "}";
     }
 }
