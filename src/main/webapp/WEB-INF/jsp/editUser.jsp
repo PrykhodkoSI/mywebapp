@@ -11,7 +11,7 @@
     <title>Edit user</title>
 </head>
 <body>
-    <form method="post" action="users">
+    <form method="post" action="/users/save">
         <jsp:useBean id="user" scope="request" class="org.itstep.myWebApp.model.User"/>
 
         <input type="hidden" name="id" value="${user.id}">
