@@ -1,4 +1,6 @@
-package org.itstep.myWebApp.web;
+package org.itstep.myWebApp.web.servlet;
+
+import org.itstep.myWebApp.service.MailService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +11,8 @@ import java.io.IOException;
 
 @WebServlet("/mail")
 public class MailServlet extends HttpServlet {
+
+    private MailService service;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
