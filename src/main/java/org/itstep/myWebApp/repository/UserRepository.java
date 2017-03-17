@@ -24,16 +24,18 @@ public class UserRepository {
         return new ArrayList<>(users.values());
     }
 
-    public void delete(Integer id) {
-        users.remove(id);
+    public boolean delete(Integer id) {
+        return users.remove(id) != null;
     }
 
-    public void save(User user) {
+    public User save(User user) {
         if (user.getId() == null) {
             user.setId(counter.getAndIncrement());
         }
 
         users.put(user.getId(), user);
+
+        return user;
     }
 
     public User getById(Integer id) {
