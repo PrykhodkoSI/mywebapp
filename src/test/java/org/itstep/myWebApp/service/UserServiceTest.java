@@ -39,7 +39,7 @@ public class UserServiceTest {
     @Test(expected = NotFoundException.class)
     public void deleteNotFound() throws Exception {
         int size = service.getAll().size();
-        service.delete(0);
+        service.delete(2);
         Assert.assertEquals(size-1, service.getAll().size());
     }
 
