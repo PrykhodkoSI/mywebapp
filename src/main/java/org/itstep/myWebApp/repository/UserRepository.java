@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Repository
-public class UserRepository {
+public class UserRepository implements IUserRepository {
 
     private Map<Integer, User> users = new ConcurrentHashMap<>();
     private AtomicInteger counter = new AtomicInteger(1);

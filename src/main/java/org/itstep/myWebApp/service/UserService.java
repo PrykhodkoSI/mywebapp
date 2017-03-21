@@ -1,6 +1,7 @@
 package org.itstep.myWebApp.service;
 
 import org.itstep.myWebApp.model.User;
+import org.itstep.myWebApp.repository.IUserRepository;
 import org.itstep.myWebApp.repository.UserRepository;
 import org.itstep.myWebApp.util.ExceptionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    private UserRepository repository;
+    private IUserRepository repository;
 
     public List<User> getAll() {
         return repository.getAll();
