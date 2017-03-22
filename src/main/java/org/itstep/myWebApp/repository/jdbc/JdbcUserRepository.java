@@ -27,12 +27,14 @@ public class JdbcUserRepository implements IUserRepository {
 
     @Override
     public boolean delete(Integer id) {
-        int update = jdbcTemplate.update("DELETE FROM Users WHERE Users.Id=?;", id);
-        return update > 0 ? true : false;
+            int update = jdbcTemplate.update("DELETE FROM Users WHERE Users.Id=?;", id);
+            return update > 0 ? true : false;
+
     }
 
     @Override
     public User save(User user) {
+        if(user.getId() == null){
         int update = jdbcTemplate.update("INSERT INTO Users (Name, LastName, City, Email) VALUES(?, ?, ?, ?)",
                 user.getName(),
                 user.getLastname(),
@@ -41,10 +43,34 @@ public class JdbcUserRepository implements IUserRepository {
         if (update == 0)
             return null;
         return user;
+        }
+        else{
+            User user1 = getById(user.getId());
+            if(user1 != null){
+                user.setId(user1.getId());
+                delete(user1.getId());
+                int update = jdbcTemplate.update("SET IDENTITY_INSERT Users ON; INSERT INTO Users (Id, Name, LastName, City, Email) VALUES(?, ?, ?, ?, ?); SET IDENTITY_INSERT Users OFF;",
+                        user.getId(),
+                        user.getName(),
+                        user.getLastname(),
+                        user.getCity(),
+                        user.getEmail());
+                if (update == 0)
+                    return null;
+            }
+            return user;
+        }
+
     }
 
     @Override
     public User getById(Integer id) {
-        return jdbcTemplate.queryForObject("SELECT * from Users WHERE Users.Id=?",mapper, id);
+        try {
+            return jdbcTemplate.queryForObject("SELECT * FROM Users WHERE Users.Id=?", mapper, id);
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
     }
 }

@@ -39,14 +39,15 @@ public class UserServiceTest {
     @Test(expected = NotFoundException.class)
     public void deleteNotFound() throws Exception {
         int size = service.getAll().size();
-        service.delete(2);
-        Assert.assertEquals(size-1, service.getAll().size());
+        service.delete(5);
+        //Assert.assertEquals(size-1, service.getAll().size());
     }
 
     @Test
     public void save() throws Exception {
         int size = service.getAll().size();
         User user = new User();
+        //user.setId(1);
         user.setName("1");
         user.setLastname("1");
         user.setCity("1");
@@ -63,7 +64,7 @@ public class UserServiceTest {
     @Test
     public void getById() throws Exception {
         User user = service.getById(1);
-        assert user != null;
+        Assert.assertEquals(user, UserTestData.USER_1);
     }
 
 }

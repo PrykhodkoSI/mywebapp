@@ -14,3 +14,4 @@ CREATE TABLE Users (
 INSERT INTO Users (Name, LastName, City, Email) VALUES ('stas1','Pr','City','Email@mail')
 INSERT INTO Users (Name, LastName, City, Email) VALUES ('Stas2','Pr','City','Email@mail')
 INSERT INTO Users (Name, LastName, City, Email) VALUES ('Stas3','Pr','City','Email@mail')
+
