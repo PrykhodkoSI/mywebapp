@@ -1,12 +1,20 @@
 package org.itstep.myWebApp.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-public class User extends Entity {
+@Entity
+@Table(name = "Users")
+public class User extends BaseEntity {
 
+    @Column(name = "LastName")
     private String lastname;
 
+    @Column(name = "City")
     private String city;
 
+    @Column(name = "Email")
     private String email;
 
     public User() {

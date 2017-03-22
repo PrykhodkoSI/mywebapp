@@ -2,7 +2,7 @@ package org.itstep.myWebApp.model;
 
 import java.time.LocalDateTime;
 
-public class Mail extends Entity {
+public class Mail extends BaseEntity {
 
     private String text;
 
