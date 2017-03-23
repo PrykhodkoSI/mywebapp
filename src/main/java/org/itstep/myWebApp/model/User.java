@@ -1,11 +1,15 @@
 package org.itstep.myWebApp.model;
 
+import org.hibernate.validator.constraints.Email;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Users")
+@NamedQuery(name="Users.getAll", query="SELECT u FROM User u")
 public class User extends BaseEntity {
 
     @Column(name = "LastName")
@@ -14,6 +18,7 @@ public class User extends BaseEntity {
     @Column(name = "City")
     private String city;
 
+    @Email
     @Column(name = "Email")
     private String email;
 
